@@ -2,6 +2,13 @@
 // followed week-14 activity-17 setup
 const mysql = require("mysql");
 
+const connection;
+
+if (process.env.JAWSDB_URL) {
+    connection = mysql.createConnection(process.env.JAWSDB_URL)
+}
+else {
+
 // connection credentials
 const connection = mysql.createConnection({
     host: "localhost",
@@ -10,6 +17,8 @@ const connection = mysql.createConnection({
     password: "m39641542",
     database: "burgers_db"
 });
+
+}
 
 // make the connection
 connection.connect( (err) => {
