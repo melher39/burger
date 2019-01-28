@@ -13,6 +13,17 @@ const PORT = process.env.PORT || 6000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// require handlebars
+const exphbs = require("express-handlebars");
+
+// set up the handlebars engine
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+// import routes and let server access these routes
+const routes = require("./controllers/burgers_controller.js");
+app.use(routes);
+
 // start the server and begin to listen
 app.listen(PORT, () => {
     console.log("App is listening on port: " + PORT)

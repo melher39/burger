@@ -20,3 +20,5 @@ router.get("/", (req, res)=>{
         res.render("index", burgersObject);
     });
 });
+
+module.exports = router;
