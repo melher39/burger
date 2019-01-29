@@ -5,7 +5,7 @@ const express = require("express");
 const app = express();
 
 // port will be used for deployment and locally
-const PORT = process.env.PORT || 6000;
+const PORT = process.env.PORT || 3000;
 
 // app can access static content from the "public" direcoty which includes css and the burger image
 app.use(express.static("public"))
