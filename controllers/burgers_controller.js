@@ -11,6 +11,7 @@ const burger = require("../models/burger.js")
 // in reference to catsController.js in week-14 activity-17
 
 // default or home route
+// this should bring up all the burgers currently in the list
 router.get("/", (req, res)=>{
     burger.selectAll( (data)=>{
         const burgersObject = {
@@ -21,4 +22,32 @@ router.get("/", (req, res)=>{
     });
 });
 
+// this should create a new burger column with a custom name and devoured set to false
+router.post("/api/burgers", (req, res) => {
+    let burgerName = req.body.burger_name;
+    burger.insertOne( burgerName, (result)=>{
+        res.json(result);
+    });
+});
+
+// this should get the id of the burger the user wishes to update and change the devoured value to true
+router.put("/api/burgers/:id", (req, res) => {
+    let condition = "id = " + req.params.id;
+
+    burger.updateOne(condition, (result) => {
+        // if no rows were affected, it should mean the ID does not exist, so return error 404 (not found)
+        // taken from week-14 activity 17
+        if (result.affectedRows == 0) {
+            return res.status(404).end();
+        }
+        // else give us a successful response and end process
+        else {
+            res.status(200).end();
+        }
+
+    });
+
+});
+
+// export routes for server.js to use
 module.exports = router;
