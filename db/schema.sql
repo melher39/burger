@@ -1,3 +1,4 @@
+-- mySQL code to create the database and table we will be using in this project
 CREATE DATABASE burgers_db;
 
 USE burgers_db;

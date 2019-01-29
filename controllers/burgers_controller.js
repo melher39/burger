@@ -12,9 +12,10 @@ const burger = require("../models/burger.js")
 
 // default or home route
 // this should bring up all the burgers currently in the list
-router.get("/", (req, res)=>{
-    burger.selectAll( (data)=>{
+router.get("/", (req, res) => {
+    burger.selectAll((data) => {
         // we have to pass in an object to index.handlebars so we create an object with the array data
+        // test that outputs all burger data
         console.log(data);
         res.render("index", { burgersCollected: data });
     });
@@ -22,21 +23,23 @@ router.get("/", (req, res)=>{
 
 // this should create a new burger column with a custom name and devoured set to false
 router.post("/api/burgers", (req, res) => {
+    // the burger_name comes from the submit form input name, which is the new burger's name the user has created
     let burgerName = req.body.burger_name;
-    burger.insertOne( burgerName, (result) => {
-        console.log("post result: "+ result.insertId);
-        
+
+    burger.insertOne(burgerName, (result) => {
+        // for testing purposes, return the ID of the new burger
+        console.log("post result: " + result.insertId);
+
         // this will pretty much refresh the page so the section is updated once the new burger is added
         // this is done by redirecting the route to the / home page
         // inspired by week-14 activity 8 server.js
-        // res.json(result);
         res.redirect("/");
-        
     });
 });
 
 // this should get the id of the burger the user wishes to update and change the devoured value to true
 router.put("/api/burgers/:id", (req, res) => {
+    // variable to store the id of the burger to know which one to update
     let condition = "id = " + req.params.id;
     console.log("condition is: " + condition);
 
@@ -50,9 +53,7 @@ router.put("/api/burgers/:id", (req, res) => {
         else {
             res.status(200).end();
         }
-
     });
-
 });
 
 // export routes for server.js to use

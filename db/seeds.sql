@@ -1,3 +1,4 @@
+-- sample data used for the burgers table
 USE burgers_db;
 
 INSERT INTO burgers (burger_name, devoured)
