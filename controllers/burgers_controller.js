@@ -14,7 +14,8 @@ const burger = require("../models/burger.js")
 // this should bring up all the burgers currently in the list
 router.get("/", (req, res)=>{
     burger.selectAll( (data)=>{
-        const burgersObject = {
+        // we have to pass in an object to index.handlebars so we create an object with the array data
+        let burgersObject = {
             burgersCollected: data
         };
         console.log(burgersObject);
