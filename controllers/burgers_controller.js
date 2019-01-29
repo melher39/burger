@@ -15,18 +15,15 @@ const burger = require("../models/burger.js")
 router.get("/", (req, res)=>{
     burger.selectAll( (data)=>{
         // we have to pass in an object to index.handlebars so we create an object with the array data
-        let burgersObject = {
-            burgersCollected: data
-        };
-        console.log(burgersObject);
-        res.render("index", burgersObject);
+        console.log(data);
+        res.render("index", { burgersCollected: data });
     });
 });
 
 // this should create a new burger column with a custom name and devoured set to false
 router.post("/api/burgers", (req, res) => {
     let burgerName = req.body.burger_name;
-    burger.insertOne( burgerName, (result)=>{
+    burger.insertOne( burgerName, (result) => {
         console.log("post result: "+ result);
         res.json(result);
     });
