@@ -38,6 +38,7 @@ router.post("/api/burgers", (req, res) => {
 // this should get the id of the burger the user wishes to update and change the devoured value to true
 router.put("/api/burgers/:id", (req, res) => {
     let condition = "id = " + req.params.id;
+    console.log("condition is: " + condition);
 
     burger.updateOne(condition, (result) => {
         // if no rows were changed, it should mean the ID does not exist, so return error 404 (not found)
