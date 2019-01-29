@@ -1,9 +1,31 @@
 <main>
+    {{!-- make content horizantally centered --}}
     <div class="container center-align">
         <div class="burger-photo-section">
             <img src="assets/img/burger-stock.jpg" alt="Huge Burger" class="circle" id="huge-burger">
         </div>
-        <h1>Eat Da Burger!</h1>
+        {{!-- app title --}}
+        <h2>Eat Dat Burger!</h2>
+
+        {{!-- burger entry form --}}
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6 offset-s3">
+                        <i class="material-icons prefix">mode_edit</i>
+                        <input id="icon_prefix" type="text" class="validate">
+                        <label for="icon_prefix">Add A Burger</label>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+        {{!-- submit button --}}
+        <button class="btn-large waves-effect waves-light" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+        </button>
+
+
     </div>
 </main>
-
