@@ -25,7 +25,11 @@ router.post("/api/burgers", (req, res) => {
     let burgerName = req.body.burger_name;
     burger.insertOne( burgerName, (result) => {
         console.log("post result: "+ result);
-        res.json(result);
+        
+        // this will pretty much refresh the page so the section is updated once the new burger is added
+        // this is done by redirecting the route to the / home page
+        res.redirect("/");
+        // res.json(result);
     });
 });
 
