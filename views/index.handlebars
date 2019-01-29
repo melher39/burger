@@ -16,7 +16,11 @@
                     {{#each burgersCollected}}
                     {{!-- if the burgers have NOT been devoured already, then display them --}}
                     {{#unless devoured}}
-                    <li>{{this.id}}. {{this.burger_name}}</li>
+                    <li>
+                        {{this.id}}. {{this.burger_name}}
+
+                        <a class="waves-effect waves-light btn-small"><i class="material-icons left">fastfood</i>devour it!</a>
+                    </li>
                     {{/unless}}
                     {{/each}}
                 </ul>
@@ -44,7 +48,7 @@
                 <div class="row">
                     <div class="input-field col s6 offset-s3">
                         <i class="material-icons prefix">mode_edit</i>
-                        <input id="icon_prefix" type="text" class="validate" name="burger_name">
+                        <input id="icon_prefix" type="text" class="validate" name="burger_name" required>
                         <label for="icon_prefix">Add A Burger</label>
                     </div>
                 </div>
