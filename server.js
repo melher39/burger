@@ -7,6 +7,9 @@ const app = express();
 // port will be used for deployment and locally
 const PORT = process.env.PORT || 6000;
 
+// app can access static content from the "public" direcoty which includes css and the burger image
+app.use(express.static("public"))
+
 // Sets up the Express app to handle data parsing
 // aka the middleware
 // static code taken from week13-activity 13
