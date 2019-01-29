@@ -26,6 +26,7 @@ router.get("/", (req, res)=>{
 router.post("/api/burgers", (req, res) => {
     let burgerName = req.body.burger_name;
     burger.insertOne( burgerName, (result)=>{
+        console.log("post result: "+ result);
         res.json(result);
     });
 });
@@ -35,9 +36,9 @@ router.put("/api/burgers/:id", (req, res) => {
     let condition = "id = " + req.params.id;
 
     burger.updateOne(condition, (result) => {
-        // if no rows were affected, it should mean the ID does not exist, so return error 404 (not found)
+        // if no rows were changed, it should mean the ID does not exist, so return error 404 (not found)
         // taken from week-14 activity 17
-        if (result.affectedRows == 0) {
+        if (result.changedRows == 0) {
             return res.status(404).end();
         }
         // else give us a successful response and end process

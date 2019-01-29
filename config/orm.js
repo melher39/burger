@@ -17,7 +17,7 @@ const orm = {
     // this will insert a new burger and its values into the table
     insertOne: ( tableName, burgerName, devoured, cb) => {
         const queryString = "INSERT INTO " + tableName + " (burger_name, devoured)"
-         + " VALUES " + "(" + burgerName + ", " + devoured + ")";
+         + " VALUES " + "('" + burgerName + "', " + devoured + ");";
 
          console.log("insert into query string: " + queryString);
 
