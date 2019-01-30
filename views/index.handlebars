@@ -8,12 +8,12 @@
         </div>
 
         {{!-- app title --}}
-        <h2 class="center-align">Eat Dat Burger!</h2>
+        <h2 class="center-align" id="title">Eat Dat Burger!</h2>
 
         {{!-- section to display burgers --}}
         <div class="row">
             {{!-- newly added burger list --}}
-            <div class="col s6">
+            <div class="col s5 offset-s1">
                 <div class="row">
                 <ul>
                     {{!-- #each will iterate over the array of objects burgersCollected --}}
@@ -21,7 +21,7 @@
                     {{!-- if the burgers have NOT been devoured already, then display them --}}
                     {{#unless devoured}}
                     <li>
-                        <span class="col s4">
+                        <span class="col s6">
                         {{this.id}}. {{this.burger_name}}
                         </span>
                         
@@ -37,7 +37,7 @@
             </div>
 
             {{!-- devoured burger list --}}
-            <div class="col s6">
+            <div class="col s4 offset-s2">
                 <div class="row">
                 <ul>
                     {{!-- #each will iterate over the array of objects burgersCollected --}}
@@ -45,6 +45,7 @@
                     {{!-- if the burgers have been devoured already, then display them --}}
                     {{#if devoured}}
                     <li>{{this.id}}. {{this.burger_name}}</li>
+                    <br>
                     {{/if}}
                     {{/each}}
                 </ul>
@@ -58,18 +59,24 @@
             <form class="col s12 center-align" method="POST" action="/api/burgers">
                 <div class="row">
                     <div class="input-field col s6 offset-s3">
-                        <i class="material-icons prefix">addt</i>
+                        <i class="material-icons prefix">add</i>
                         {{!-- required is the form validation used for this text input, the field cannot be empty or more than 40 characters --}}
                         <input id="icon_prefix" type="text" class="validate" name="burger_name" maxlength="40" required>
-                        <label for="icon_prefix">Add A Burger</label>
+                        <label for="icon_prefix">Add Burger</label>
                     </div>
                 </div>
+
                 {{!-- submit button --}}
                 <button class="btn-large waves-effect waves-light" type="submit" name="action">Submit
                     <i class="material-icons right">send</i>
                 </button>
 
             </form>
+        </div>
+
+        {{!-- instructions --}}
+        <div class="row center-align">
+            <i>Enter a burger you want to eat and select the SUBMIT button.</i>
         </div>
 
     </div>

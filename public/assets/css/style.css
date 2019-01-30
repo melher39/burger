@@ -3,6 +3,20 @@
 /* burger picture */
 #huge-burger{
     width: 25%;
+    margin-top: 2%;
 }
 
-/* will add more style later */
+/* app header */
+#title {
+    font-family: Shrikhand;
+}
+
+/* burger names font */
+li {
+    font-size: 120%;
+}
+
+/* customize devour-buttons color */
+.btn-small {
+    background-color: #b71c1c;
+}
