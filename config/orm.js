@@ -34,7 +34,7 @@ const orm = {
 
     // this will update a burger by updating devour to true
     updateOne: (tableName, condition, cb) => {
-        const queryString = "UPDATE " + tableName + " SET devoured = TRUE WHERE " + condition;
+        let queryString = "UPDATE " + tableName + " SET devoured = TRUE WHERE " + condition;
         
         console.log("update query string: " + queryString);
         

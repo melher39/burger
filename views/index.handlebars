@@ -1,39 +1,44 @@
 <main>
     {{!-- make content horizantally centered --}}
-    <div class="container center-align">
+    <div class="container">
 
         {{!-- burger photo --}}
-        <div class="burger-photo-section">
+        <div class="burger-photo-section center-align">
             <img src="assets/img/burger-stock.jpg" alt="Huge Burger" class="circle" id="huge-burger">
         </div>
 
         {{!-- app title --}}
-        <h2>Eat Dat Burger!</h2>
+        <h2 class="center-align">Eat Dat Burger!</h2>
 
         {{!-- section to display burgers --}}
         <div class="row">
             {{!-- newly added burger list --}}
             <div class="col s6">
+                <div class="row">
                 <ul>
                     {{!-- #each will iterate over the array of objects burgersCollected --}}
                     {{#each burgersCollected}}
                     {{!-- if the burgers have NOT been devoured already, then display them --}}
                     {{#unless devoured}}
                     <li>
+                        <span class="col s4">
                         {{this.id}}. {{this.burger_name}}
-
-                        <button id="devour-button" class="btn-small waves-effect waves-light" type="submit" name="action" data-id="{{this.id}}">Devour It!
+                        </span>
+                        
+                        <button class="btn-small waves-effect waves-light devour-button" type="submit" name="action" data-id="{{this.id}}">Devour It!
                             <i class="material-icons left">fastfood</i>
                         </button>
-
                     </li>
+                    <br>
                     {{/unless}}
                     {{/each}}
                 </ul>
+                </div>
             </div>
 
             {{!-- devoured burger list --}}
             <div class="col s6">
+                <div class="row">
                 <ul>
                     {{!-- #each will iterate over the array of objects burgersCollected --}}
                     {{#each burgersCollected}}
@@ -43,18 +48,19 @@
                     {{/if}}
                     {{/each}}
                 </ul>
-
+                </div>
             </div>
         </div>
 
         {{!-- burger entry form --}}
         <div class="row">
             {{!-- this form will directly connect to the post route in the controller --}}
-            <form class="col s12" method="POST" action="/api/burgers">
+            <form class="col s12 center-align" method="POST" action="/api/burgers">
                 <div class="row">
                     <div class="input-field col s6 offset-s3">
-                        <i class="material-icons prefix">mode_edit</i>
-                        <input id="icon_prefix" type="text" class="validate" name="burger_name" required>
+                        <i class="material-icons prefix">addt</i>
+                        {{!-- required is the form validation used for this text input, the field cannot be empty or more than 40 characters --}}
+                        <input id="icon_prefix" type="text" class="validate" name="burger_name" maxlength="40" required>
                         <label for="icon_prefix">Add A Burger</label>
                     </div>
                 </div>
